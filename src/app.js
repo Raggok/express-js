@@ -1,4 +1,4 @@
-/*import 'dotenv/config';
+import 'dotenv/config';
 import cors from 'cors';
 import path from 'path';
 import express from 'express';
@@ -43,19 +43,5 @@ app.use('/api-doc', SwaggerUI.serve, SwaggerUI.setup(swaggerJSDoc(options)));
 app.use('/api/users', usersRoutes);
 app.use('/api/logs', logsRoutes);
 app.use('/api', toolsRoutes);
-
-export default app;*/
-//import 'dotenv/config';
-import express from 'express';
-
-const app = express();
-app.set('port', process.env.PORT || 3000);
-
-//Middlewares
-app.use(express.json());
-
-app.get('*', (req, res) => {
-  res.send('Express JS on Vercel');
-});
 
 export default app;
