@@ -1,0 +1,15 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module"
+  },
+  "extends": ["eslint:recommended", "eslint-config-prettier"],
+  "rules": {
+    "strict": "error",
+    "no-console": "warn",
+    "no-extra-semi": "off"
+  },
+  "env": {
+    "node": true
+  }
+}

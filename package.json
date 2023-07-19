@@ -1,22 +1,57 @@
 {
-  "name": "express",
+  "name": "apiai",
   "version": "1.0.0",
-  "description": "",
+  "description": "Api de Efinfo para la integración de herramientas de Inteligencia Artificial",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "babel src -d build",
+    "babel-node": "babel-node --presets=@babel/preset-env",
+    "dev": "nodemon --exec npm run babel-node src/index.js",
+    "build-test": "babel src/ --out-dir build",
     "start": "node build/index.js",
-    "test": "echo \"Error: no test specified\" && exit s1"
+    "test": "npm run test:unit && npm run test:integration",
+    "test:unit": "jest -c jest.unit.config.js",
+    "test:integration": "jest -c jest.integration.config.js --forceExit",
+    "lint": "eslint --ignore-path .gitignore --ext .js .",
+    "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|json)\"",
+    "format": "npm run prettier -- --write",
+    "check-format": "npm run prettier -- --list-different",
+    "validate": "npm-run-all --parallel lint format",
+    "prepare": "husky install"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "express": "^4.18.2"
-  },
   "devDependencies": {
     "@babel/cli": "^7.22.9",
-    "@babel/core": "^7.22.9"
+    "@babel/core": "^7.22.9",
+    "@babel/node": "^7.20.7",
+    "eslint": "^8.34.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.1.2",
+    "nodemon": "^2.0.20",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.8.4"
+  },
+  "dependencies": {
+    "@babel/preset-env": "^7.21.4",
+    "aws-sdk": "^2.1323.0",
+    "babel-node": "^0.0.1-security",
+    "babel-preset-env": "^1.7.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "eslint-config-prettier": "^8.6.0",
+    "express": "^4.18.2",
+    "gpt-3-encoder": "^1.1.4",
+    "jest": "^29.5.0",
+    "jsonwebtoken": "^9.0.0",
+    "moment": "^2.29.4",
+    "openai": "^3.1.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.1",
+    "uuid": "^9.0.0"
   }
 }
